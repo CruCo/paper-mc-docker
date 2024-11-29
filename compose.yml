@@ -1,6 +1,6 @@
 services:
-  mc-server:
-    image: mc-server
+  papermc:
+    image: papermc
     build:
       context: .
       args:
