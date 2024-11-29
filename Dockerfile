@@ -22,9 +22,7 @@ RUN apk update && \
     curl -o server.jar "https://api.papermc.io/v2/projects/${PROJECT}/versions/${MC_VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
     
 
-EXPOSE 25565
-
-VOLUME /world
-VOLUME /plugins
+EXPOSE 25565/tcp
+EXPOSE 25565/udp
 
 ENTRYPOINT ["sh", "start.sh"]

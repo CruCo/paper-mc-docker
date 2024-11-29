@@ -30,6 +30,18 @@ to run the server. The first run takes some time.
 |MAX_RAM | 8G | Used to set the -xmx for the JVM inside of docker. Change this if you need a higher maxmimum RAM during runtime|
 
 ## Server config and backup
+
+### Configuration
+To configure place all config files inside of a folder "config". These files are mounted into the minecraft server folder parallel to the server.jar.
+
+
+So in order to configure the server with the files displayed in the [papermc config reference ](https://docs.papermc.io/paper/reference/configuration), place the files with your specific configuration in the "config" folder.
+
+It is necessary, that the files are present so in this Repository they are added like they are as default.
+
+**ADAPT TO YOUR NEED AND BACK THEM UP**
+
+### Plugin and world backups
 For configuration and backup purposes the docker compose creates two local folders in your filesystem outside of your docker container. This has a little performance impact but is easier to make changes to the server configuration on the fly.
 
 World data is saved into /world folder. Add any plugin you need to /plugin folder.

@@ -15,10 +15,28 @@ services:
       - 25565:25565
     volumes:
       - ./world:/minecraft/world
+      - ./world_nether:/minecraft/world_nether
+      - ./world_the_end:/minecraft/world_the_end
+      - type: bind
+        source: ./config/bukkit.yml
+        target: /minecraft/bukkit.yml
+      - type: bind
+        source: ./config/server.properties
+        target: /minecraft/server.properties
+      - type: bind
+        source: ./config/spigot.yml
+        target: /minecraft/spigot.yml
+      - type: bind
+        source: ./config/whitelist.json
+        target: /minecraft/whitelist.json
       - ./plugins:/minecraft/plugins
 
 volumes:
   world:
+    driver: local
+  world_nether:
+    driver: local
+  world_the_end:
     driver: local
   plugins:
     driver: local
