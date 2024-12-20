@@ -33,6 +33,12 @@ services:
       - type: bind
         source: ./config/ops.json
         target: /minecraft/ops.json
+      - type: bind
+        source: ./config/banned-ips.json
+        target: /minecraft/banned-ips.json
+      - type: bind
+        source: ./config/banned-players.json
+        target: /minecraft/banned-players.json
 
 volumes:
   world:
