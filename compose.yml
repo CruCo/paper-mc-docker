@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        MC_VERSION: 1.21.3
+        MC_VERSION: 1.21.4
         MIN_RAM: 1G
         MAX_RAM: 8G
     container_name: mc-server
@@ -17,6 +17,7 @@ services:
       - ./world:/minecraft/world
       - ./world_nether:/minecraft/world_nether
       - ./world_the_end:/minecraft/world_the_end
+      - ./plugins:/minecraft/plugins
       - type: bind
         source: ./config/bukkit.yml
         target: /minecraft/bukkit.yml
@@ -29,7 +30,9 @@ services:
       - type: bind
         source: ./config/whitelist.json
         target: /minecraft/whitelist.json
-      - ./plugins:/minecraft/plugins
+      - type: bind
+        source: ./config/ops.json
+        target: /minecraft/ops.json
 
 volumes:
   world:
