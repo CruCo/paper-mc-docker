@@ -17,7 +17,7 @@ RUN apk update && \
     apk upgrade && \
     apk add jq curl && \
     echo "eula=true" > eula.txt && chmod +x ./start.sh && \
-    export LATEST_BUILD=$(curl -s https://api.papermc.io/v2/projects/${PROJECT}/versions/${MC_VERSION}/builds | jq -r '.builds | map(select(.channel =="default") | .build) | .[-1]'); \
+    export LATEST_BUILD=$(curl -s https://api.papermc.io/v2/projects/${PROJECT}/versions/${MC_VERSION}/builds | jq -r '.builds | .[-1] | .build'); \
     export JAR_NAME=${PROJECT}-${MC_VERSION}-${LATEST_BUILD}.jar; \
     curl -o server.jar "https://api.papermc.io/v2/projects/${PROJECT}/versions/${MC_VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
     
