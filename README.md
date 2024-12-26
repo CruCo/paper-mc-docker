@@ -26,10 +26,9 @@ As exposed in the compose.yml the following build arguments are used and can be 
 |---|---|---|
 |MC_VERSION|1.21.4|Used to build a specific version of minecraft. Change this if you need another version|
 |UNAME|papermc|Username which is used to build and run the container. Necessary to run as a non root user. Check if $USER is set on the machine.|
-|UID|1000|Userid of the user. Check if $UID is set on the machine.|
-|GID|1000|Groupid of the user. Check if $GID is set on the machine.|
+|COMPOSE_UID|-|Userid of the user. Set on the machine to uid you want.|
+|COMPOSE_GID|-|Groupid of the user. Set on the machine to gid you want.|
 
-**`UNAME`, `UID` and `GID` should be present in order to have proper file access on your host machine.**
 
 ### Environment variables
 |Variablename| Default value| Description|
