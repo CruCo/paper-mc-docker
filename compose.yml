@@ -1,12 +1,16 @@
 services:
   papermc:
     image: papermc
+    environment:
+      - MIN_RAM=${MIN_RAM}
+      - MAX_RAM=${MAX_RAM}
     build:
       context: .
       args:
-        MC_VERSION: 1.21.4
-        MIN_RAM: 1G
-        MAX_RAM: 8G
+        - MC_VERSION=${MC_VERSION}
+        - UNAME=${UNAME}
+        - UID=${UID}
+        - GID=${GID}
     container_name: mc-server
     restart: always
     stdin_open: true

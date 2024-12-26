@@ -16,18 +16,39 @@ This approach eliminates the need to get rid of old jar files. Much rather you c
 ### Prerequisites
 Make sure docker and docker compose is up to date and running on your machine.
 
+## Configure the image
+Make sure to prepare your machine with the necessary variables to configure the build in the way you need it.
+
+
+### Build arguments
+As exposed in the compose.yml the following build arguments are used and can be changed on your behalf:
+|Argument|Default value|Description|
+|---|---|---|
+|MC_VERSION|1.21.4|Used to build a specific version of minecraft. Change this if you need another version|
+|UNAME|papermc|Username which is used to build and run the container. Necessary to run as a non root user. Check if $USER is set on the machine.|
+|UID|1000|Userid of the user. Check if $UID is set on the machine.|
+|GID|1000|Groupid of the user. Check if $GID is set on the machine.|
+
+**`UNAME`, `UID` and `GID` should be present in order to have proper file access on your host machine.**
+
+### Environment variables
+|Variablename| Default value| Description|
+|---|---|---|
+|MIN_RAM | 1G | Used to set the -xms for the JVM inside of docker. Change this if you need more or less RAM on startup|
+|MAX_RAM | 8G | Used to set the -xmx for the JVM inside of docker. Change this if you need a higher maxmimum RAM during runtime|
+
 ## Run mc server
 Use the command
 > docker compose up -d --build
 
 to run the server. The first run takes some time.
 
-## Settings
-|Variablename| Default value| Description|
-|---|---|---|
-|MC_VERSION| 1.21.3 | Used to build a specific version of minecraft. Change this if you need another version |
-|MIN_RAM | 1G | Used to set the -xms for the JVM inside of docker. Change this if you need more or less RAM on startup|
-|MAX_RAM | 8G | Used to set the -xmx for the JVM inside of docker. Change this if you need a higher maxmimum RAM during runtime|
+### Attach and detach
+The server is started in detached mode. In order to attach to your minecraft server (e.g. to issue server commands) run the following command on the host machine
+> docker attach mc-server
+
+While being attached you can than detach again by hitting the following key-strokes
+`Ctrl + p` and than `Ctrl + q`
 
 ## Server config and backup
 
@@ -46,5 +67,12 @@ For configuration and backup purposes the docker compose creates two local folde
 
 World data is saved into /world folder. Add any plugin you need to /plugin folder.
 
-## Important
+## Important information
+
+### EULA
 By running the command you are automatically accepting the EULA of Mojang AB and Microsoft Corporation. This is set to default and needs to be set to true in order to run it.
+
+### System cleanup
+When you run this project for a long time you start to pollute your system with docker build cache artifacts. It can help to clean the system from time to time with
+
+> docker system prune
