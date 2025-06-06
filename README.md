@@ -24,7 +24,7 @@ Make sure to prepare your machine with the necessary variables to configure the 
 As exposed in the compose.yml the following build arguments are used and can be changed on your behalf:
 |Argument|Default value|Description|
 |---|---|---|
-|MC_VERSION|1.21.4|Used to build a specific version of minecraft. Change this if you need another version|
+|MC_VERSION|1.21.5|Used to build a specific version of minecraft. Change this if you need another version|
 |UNAME|papermc|Username which is used to build and run the container. Necessary to run as a non root user. Check if $USER is set on the machine.|
 |COMPOSE_UID|-|Userid of the user. Set on the machine to uid you want.|
 |COMPOSE_GID|-|Groupid of the user. Set on the machine to gid you want.|
